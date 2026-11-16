@@ -6,6 +6,11 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
+// This one is for the AI
+class QTable {
+	std::unordered_map<std::string state>
+}
+
 // This shit is for setting the sigma board like a gigachad. Returns error if:
 // 1. Invalid element
 // 2. The element is not 0 (empty)
@@ -38,14 +43,16 @@ void AIMove(){
 // Didn't know what to name on this one but it's basically returning what the fuck is that element represents
 // if 1 then AI, if -1 then Player
 // Notice I don't have 0 which is empty
-// Because I'm so retarded that I expected myself to only use this function when the game ends, potentionally a drawback function who knows
+// Because I'm so retarded that I expected myself to only use this function when the game ends, potentionally a drawback function, who knows
 // and I am such a sigma
 std::string otenShit(int boardValue){
 	return ((boardValue == 1) ? "AI" : "Player");
 }
 
 // This one checks if the board is boarding the board board
-// Throws some shi if "
+// Throws some shi if:
+// 1. There is a winner
+// 2. There is no more moves left
 void checkBoard(MatrixXd &board){
 	bool draw = true;
 	for(int i = 0; i < 3; i++){
@@ -78,7 +85,7 @@ int main(){
 			//AI Input
 			else AIMove();
 		} catch (...) { //When player is fucking with the input or AI somehow fucked up
-			continue;
+			continue; //Supposedly it's going to be some repeat some shi idk
 		}
 
 		//Change the board state
